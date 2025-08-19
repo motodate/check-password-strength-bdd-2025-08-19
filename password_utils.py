@@ -5,6 +5,10 @@ import string
 
 def generate_password(length: int) -> str:
     """指定された長さのパスワードを生成する"""
+    if length is None:
+        raise TypeError("長さがnullです")
+    if not isinstance(length, int):
+        raise TypeError("長さは整数である必要があります")
     if length < 4:
         raise ValueError("4種類の文字を含めるには最低4文字必要です")
     if length > 100:

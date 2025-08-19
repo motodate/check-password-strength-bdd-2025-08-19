@@ -66,3 +66,13 @@ def test_負の長さのパスワード生成でエラーが発生する():
 def test_101文字のパスワード生成でエラーが発生する():
     with pytest.raises(ValueError, match="パスワードの長さは4〜100である必要があります"):
         generate_password(MAXIMUM_PASSWORD_LENGTH + 1)
+
+
+def test_文字列での長さ指定でエラーが発生する():
+    with pytest.raises(TypeError, match="長さは整数である必要があります"):
+        generate_password("twelve")  # type: ignore
+
+
+def test_nullでの長さ指定でエラーが発生する():
+    with pytest.raises(TypeError, match="長さがnullです"):
+        generate_password(None)  # type: ignore
