@@ -10,6 +10,7 @@ pytest = "*"
 black = "*"
 flake8 = "*"
 pytest-bdd = "*"
+ruff = "*"
 
 [requires]
 python_version = "3.13"
