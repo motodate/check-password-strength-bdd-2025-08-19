@@ -8,8 +8,6 @@ name = "pypi"
 [dev-packages]
 pytest = "*"
 black = "*"
-flake8 = "*"
-pytest-bdd = "*"
 ruff = "*"
 
 [requires]
