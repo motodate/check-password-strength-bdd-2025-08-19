@@ -43,3 +43,10 @@ def test_100文字のパスワードが生成できる():
     password = generate_password(MAXIMUM_PASSWORD_LENGTH)
     
     assert len(password) == MAXIMUM_PASSWORD_LENGTH
+
+
+def test_生成されたパスワードはユニークである():
+    password1 = generate_password(12)
+    password2 = generate_password(12)
+    
+    assert password1 != password2
