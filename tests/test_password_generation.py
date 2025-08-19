@@ -1,5 +1,6 @@
 """パスワード生成機能のテスト"""
 import string
+import pytest
 
 from password_utils import generate_password
 
@@ -50,3 +51,18 @@ def test_生成されたパスワードはユニークである():
     password2 = generate_password(12)
     
     assert password1 != password2
+
+
+def test_3文字以下のパスワード生成でエラーが発生する():
+    with pytest.raises(ValueError, match="4種類の文字を含めるには最低4文字必要です"):
+        generate_password(3)
+
+
+def test_負の長さのパスワード生成でエラーが発生する():
+    with pytest.raises(ValueError, match="4種類の文字を含めるには最低4文字必要です"):
+        generate_password(-1)
+
+
+def test_101文字のパスワード生成でエラーが発生する():
+    with pytest.raises(ValueError, match="パスワードの長さは4〜100である必要があります"):
+        generate_password(MAXIMUM_PASSWORD_LENGTH + 1)
